@@ -1,5 +1,5 @@
 const response = require("../response");
-const moment =require('moment')
+const moment = require("moment");
 let data = [
   {
     id: 1,
@@ -7,7 +7,7 @@ let data = [
     remaingTime: "30Days Left",
     description: "xyz",
     date: "10-12-2020",
-    time:"20-03 pm",
+    time: "20-03 pm",
     priority: "normal",
   },
   {
@@ -16,7 +16,7 @@ let data = [
     remaingTime: "30Days Left",
     description: "xyz",
     date: "10-12-2020",
-    time:"20-03 pm",
+    time: "20-03 pm",
     priority: "heigh",
   },
   {
@@ -25,7 +25,7 @@ let data = [
     remaingTime: "30Days Left",
     description: "xyz",
     date: "10-12-2020",
-    time:"20-03 pm",
+    time: "20-03 pm",
     priority: "normal",
   },
   {
@@ -34,7 +34,7 @@ let data = [
     remaingTime: "30Days Left",
     description: "xyz",
     date: "10-12-2020",
-    time:"20-03 pm",
+    time: "20-03 pm",
     priority: "normal",
   },
   {
@@ -43,7 +43,7 @@ let data = [
     remaingTime: "30Days Left",
     description: "xyz",
     date: "10-12-2020",
-    time:"20-03 pm",
+    time: "20-03 pm",
     priority: "heigh",
   },
   {
@@ -52,7 +52,7 @@ let data = [
     remaingTime: "30Days Left",
     description: "xyz",
     date: "10-12-2020",
-    time:"20-03 pm",
+    time: "20-03 pm",
     priority: "low",
   },
   {
@@ -61,7 +61,7 @@ let data = [
     remaingTime: "30Days Left",
     description: "xyz",
     date: "10-12-2020",
-    time:"20-03 pm",
+    time: "20-03 pm",
     priority: "low",
   },
 ];
@@ -76,6 +76,16 @@ class Todo {
   async add_new_task(req, res) {
     data.push(req.body);
     res.json(response(true, "added successfully", {}));
+  }
+  async delete_task(req, res) {
+    // data.pop()
+    console.log('dshb')
+    const id = req.params.id;
+    var index = data.findIndex(function (o) {
+      return o.id === parseInt(id);
+    });
+    if (index !== -1) data.splice(index, 1);
+    res.json(response(true, "deleted successfully", {}));
   }
 }
 module.exports = new Todo();
